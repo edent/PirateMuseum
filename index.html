@@ -1,105 +1,141 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>The Pirate Museum by @edent</title>
-    <meta name="description" content="The Pirate Museum">
-    <script src="js/aframe.min.js"></script>
-  </head>
-  <script>
-      var msg = new SpeechSynthesisUtterance();
-      var voices = window.speechSynthesis.getVoices();
-      msg.voice = voices[2]; // Note: some voices don't support altering params
-      msg.voiceURI = 'native';
-      msg.volume = 1; // 0 to 1
-      msg.rate = 1; // 0.1 to 10
-      msg.pitch = 0; //0 to 2
-      msg.text = "The small self-portrait on copper by Rembrandt was stolen from Nationalmuseum in Stockholm in an armed robbery in December 2000. It was recovered in Copenhagen in 2005.";
-      msg.lang = 'en-GB';
+	<head>
+		<meta charset="utf-8">
+		<title>The Pirate Museum by @edent</title>
+		<meta name="description" content="The Pirate Museum">
+		<script src="js/aframe.min.js"></script>
+	</head>
+	<script>
+      var msgPoppies = "Poppy Flowers (also known as Vase and Flowers and Vase with Viscaria) is a painting by Vincent van Gogh with an estimated value of $50 million. It was stolen from Cairo's Mohamed Mahmoud Khalil Museum in August 2010.";
+      var msgRembrandt = "The small self-portrait on copper by Rembrandt was stolen from Nationalmuseum in Stockholm in an armed robbery in December 2000. It was recovered in Copenhagen in 2005. ";
+      var msgWellington = "The Portrait of the Duke of Wellington is a painting by the Spanish artist Francisco Goya. It was stolen on 21st of August 1961.";
+      var msgMoore = "Draped Seated Woman is a bronze sculpture by the British artist Henry Moore, made in the 1950s. The sculpture depicts a female figure in a seated position. It was pirated from Hebrew University Campus in 2014.";
+      var msgGuerrer = "Goslar Warrior is a bronze sculpture by Henry Moore. It was pirated in 2015.";
 
-      msg.onend = function(e) {
-         console.log('Finished in ' + event.elapsedTime + ' seconds.');
-      };
+      function say(message) {
+	      var msg = new SpeechSynthesisUtterance();
+         var voices = window.speechSynthesis.getVoices();
+         msg.voice = voices[2]; // Note: some voices don't support altering params
+         msg.voiceURI = 'native';
+         msg.volume = 1; // 0 to 1
+         msg.rate = 1; // 0.1 to 10
+         msg.pitch = 0; //0 to 2
+         msg.text = message;
+		   msg.lang = 'en-GB';
+         speechSynthesis.speak(msg);
+	  }
 
   </script>
   <body>
 
-    <a-scene>
-      <a-assets>
-        <img id="floor" src="img/floor.jpg" crossorigin="anonymous">
-        <img id="wellington" src="img/Francisco_Goya_-_Portrait_of_the_Duke_of_Wellington.jpg" crossorigin="anonymous">
-        <img id="poppies" src="img/Van_Gogh_-_Vase_mit_Pechnelken.jpeg" crossorigin="anonymous">
-        <img id="rembrandt" src="img/Rembrandt_Harmensz._van_Rijn_-_Selfportrait_-_Google_Art_Project.jpg" crossorigin="anonymous">
+	 <a-scene>
+		<a-assets>
+         <!-- Textures -->
+		  <img id="floor" src="img/floor.jpg" crossorigin="anonymous">
+
+        <!-- Paintings -->
+		  <img id="wellington" src="img/Francisco_Goya_-_Portrait_of_the_Duke_of_Wellington.jpg" crossorigin="anonymous">
+		  <img id="poppies" src="img/Van_Gogh_-_Vase_mit_Pechnelken.jpeg" crossorigin="anonymous">
+		  <img id="rembrandt" src="img/Rembrandt_Harmensz._van_Rijn_-_Selfportrait_-_Google_Art_Project.jpg" crossorigin="anonymous">
+
+       <!-- Frames -->
         <a-asset-item id="framebaroque-obj" src="obj/framebaroque.obj"></a-asset-item>
-        <a-asset-item id="pictureFrame-obj" src="obj/pictureFrame1.obj"></a-asset-item>
-        <a-asset-item id="picture_frame-obj" src="obj/picture_frame.obj"></a-asset-item>
+		  <a-asset-item id="pictureFrame-obj" src="obj/pictureFrame1.obj"></a-asset-item>
+		  <a-asset-item id="picture_frame-obj" src="obj/picture_frame.obj"></a-asset-item>
 
-        <a-mixin id="blue" material="color: blue"></a-mixin>
-        <a-mixin id="blue-hovered" material="color: magenta"></a-mixin>
+        <!-- Sculptures -->
+        <a-asset-item id="moore-obj" src="obj/mooreredux.obj"></a-asset-item>
+        <a-asset-item id="moore-mtl" src="obj/mooreredux.mtl"></a-asset-item>
 
-      </a-assets>
+        <a-asset-item id="guerreromoore-obj" src="obj/Guerrero_Moore.obj"></a-asset-item>
 
-      <a-sky src="img/sky.jpg" radius="1200"></a-sky>
+
+
+        <!-- Colour Pallet -->
+		  <a-mixin id="blue" material="color: blue"></a-mixin>
+		  <a-mixin id="blue-hovered" material="color: magenta"></a-mixin>
+
+		</a-assets>
+
+		<a-sky src="img/sky.jpg" radius="1200"></a-sky>
+
+		<a-entity
+			obj-model="obj: #framebaroque-obj"
+			material="color: red"
+			scale=".01 .01 .01"
+			rotation="0 0 0"
+			position="1 1 1"></a-entity>
+		<a-image
+			src="#rembrandt"
+			width="1" height="1.24"
+			position="1 1 1"
+			onclick="say(msgRembrandt);"></a-image>
+
+		<a-entity
+			obj-model="obj: #pictureFrame-obj"
+			scale=".01 .01 .01"
+			rotation="0 0 0"
+			position="3 1 -2"
+			class="clickable"
+			mixin="blue"></a-entity>
+
+		<a-image
+			src="#wellington"
+			width="1.4" height="1.7"
+			position="3 1 -2"
+			onclick="say(msgWellington);"></a-image>
+
+		<a-entity
+			obj-model="obj: #picture_frame-obj"
+			material="color: yellow"
+			scale=".0085 .01 .01"
+			rotation="0 0 90"
+			position="-2.1 0.08 -2"></a-entity>
+		<a-image
+			src="#poppies"
+			width="1" height="1.2"
+			position="-3 1 -1.9"
+			onclick="say(msgPoppies);"></a-image>
 
       <a-entity
-         obj-model="obj: #framebaroque-obj"
-         material="color: red"
-         scale=".01 .01 .01"
+         obj-model="obj: #moore-obj; mtl: #moore-mtl"
+         scale="1 1 1"
          rotation="0 0 0"
-         position="1 1 1"></a-entity>
-      <a-image
-         src="#rembrandt"
-         width="1" height="1.24"
-         position="1 1 1"
-         onclick="speechSynthesis.speak(msg);"></a-image>
+         position="4 -1 4"
+         onclick="say(msgMoore);"></a-entity>
 
       <a-entity
-         obj-model="obj: #pictureFrame-obj"
-         scale=".01 .01 .01"
+         obj-model="obj: #guerreromoore-obj"
+         material="color: bronze"
+         scale=".3 .3 .3"
          rotation="0 0 0"
-         position="3 1 -2"
-         class="clickable"
-         mixin="blue"></a-entity>
+         position="4 -1 -4"
+         onclick="say(msgGuerrer);"></a-entity>
 
-      <a-image
-         src="#wellington"
-         width="1.4" height="1.7"
-         position="3 1 -2"></a-image>
+		<a-entity camera look-controls wasd-controls position="-2 1 4">
+			<a-entity cursor="fuse: true; maxDistance: 4; timeout: 500"
+						  position="0 0 -1"
+						  scale="0.01 0.01 0.01"
+						  geometry="primitive: ring"
+						  material="color: white; shader: flat">
 
-      <a-entity
-         obj-model="obj: #picture_frame-obj"
-         material="color: yellow"
-         scale=".0085 .01 .01"
-         rotation="0 0 90"
-         position="-2.1 0.08 -2"></a-entity>
-      <a-image
-         src="#poppies"
-         width="1" height="1.2"
-         position="-3 1 -1.9"></a-image>
-
-      <a-entity camera look-controls wasd-controls position="-2 1 4">
-         <a-entity cursor="fuse: true; maxDistance: 4; timeout: 500"
-                    position="0 0 -1"
-                    scale="0.01 0.01 0.01"
-                    geometry="primitive: ring"
-                    material="color: white; shader: flat">
-
-         </a-entity>
-      </a-entity>
+			</a-entity>
+		</a-entity>
 
 
-      <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
-                position="0 10 10"></a-entity>
+		<a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
+					 position="0 10 10"></a-entity>
 
-       <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
-                 position="5 10 -13"></a-entity>
+		 <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
+					  position="5 10 -13"></a-entity>
 
-      <a-entity geometry="primitive: plane; height: 500; width: 500"
-          position="0 -0.5 0"
-          rotation="-90 0 0"
-          material="shader: flat; src: url(img/floor.jpg); repeat: 300 300"></a-entity>
+		<a-entity geometry="primitive: plane; height: 500; width: 500"
+			 position="0 -0.5 0"
+			 rotation="-90 0 0"
+			 material="shader: flat; src: url(img/floor.jpg); repeat: 300 300"></a-entity>
 
-    </a-scene>
+	 </a-scene>
 
   </body>
 </html>

@@ -14,6 +14,7 @@ Take a wander around the museum and view lost paintings, stolen sculptures, and 
 * Rembrandt_Harmensz._van_Rijn_-_Selfportrait_-_Google_Art_Project.jpg
    * [Stolen December 2000](https://en.wikipedia.org/wiki/List_of_stolen_paintings)
    * Public Domain
+*
 
 ## 3D Models
 
@@ -26,3 +27,9 @@ Take a wander around the museum and view lost paintings, stolen sculptures, and 
 *  picture_frame.obj
    * http://www.thingiverse.com/thing:319735/#files by akumar83
    * CC BY-SA 3.0
+* moore.obj
+   * ["Old Flo / Draped Seated Woman" by Henry Moore](https://en.wikipedia.org/wiki/Draped_Seated_Woman_1957%E2%80%9358) - [Pirated by tomburtonwood](http://www.thingiverse.com/thing:36415)
+   * CC BY-SA 3.0
+* Guerrero_Moore.obj
+   * [Goslar Warrior 1973–1974 - Henry Moore](https://sketchfab.com/models/d75cc66d399f430290523fa27460457f)
+   * CC BY 4.0
