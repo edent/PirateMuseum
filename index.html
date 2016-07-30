@@ -36,6 +36,7 @@
 		<a-assets>
          <!-- Textures -->
 		  <img id="floor" src="img/floor.jpg" crossorigin="anonymous">
+		  <img id="marble" src="img/Marble_pattern_008.jpg" crossorigin="anonymous">
 
         <!-- Paintings -->
 		  <img id="wellington" src="img/Francisco_Goya_-_Portrait_of_the_Duke_of_Wellington.jpg" crossorigin="anonymous">
@@ -83,7 +84,7 @@
 
 		<a-entity
 			obj-model="obj: #moore-obj"
-			material="color: yellow"
+			material="color:#465945"
 			scale="1 1 1"
 			rotation="0 180 0"
 			position="6 -0.5 -6"
@@ -106,7 +107,7 @@
 
       <a-entity
          obj-model="obj: #goslar-obj"
-         material="color: bronze"
+         material="color:#CD7F32"
          scale="1 1 1"
          rotation="0 145 0"
          position="6 -1.3 4"
@@ -127,19 +128,20 @@
 
       <a-entity
          obj-model="obj: #hepworth-obj"
-         material="color: white"
+         material="color: #c0c0c0; roughness: .5; metalness: .5"
          scale="1 1 1"
          rotation="0 0 0"
          position="-6 0 6"
          onclick="say(msgHepworth);"></a-entity>
-		<a-box color="white"
+		<a-box
+		   material="color: #c0c0c0; roughness: .5; metalness: .5"
 			depth="1.5" height="1" width="1"
 			position="-6 -0.5 6"
 			></a-box>
 
 		<a-entity
 			obj-model="obj: #frame2-obj"
-			material="color: yellow"
+			material="color:#826644"
 			scale=".0085 .01 .01"
 			rotation="0 90 90"
 			position="-6 0.08 0"></a-entity>
@@ -153,15 +155,16 @@
 
       <a-entity
          obj-model="obj: #venus-obj"
-         material="color: white"4 1 0
+         material="color:#e6e6fa"
          scale="1 1 1"
          rotation="0 45 0"
          position="-6 0 -6"
          onclick="say(msgVenus);"></a-entity>
-		<a-box color="white"
-			depth="1" height="1" width="1"
+		<a-box
+			material="shader: flat; src: #marble;"
+			depth="1" height="1" width=".85"
 			rotation="0 45 0"
-			position="-6 -0.5 -6"
+			position="-6.05 -0.5 -6.1"
 			></a-box>
 
 		<a-entity camera look-controls wasd-controls position="0 1 0">
@@ -174,17 +177,21 @@
 			</a-entity>
 		</a-entity>
 
+		<!-- <a-entity light="type: ambient; color: #CCC"></a-entity> -->
 
-		<a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
-					 position="0 10 10"></a-entity>
+		<a-entity light="type: point; intensity: 0.75; distance: 20; decay: 1"
+					 position="0 0 0"></a-entity>
 
-		 <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2"
-					  position="5 10 -13"></a-entity>
+		<a-entity light="type: point; intensity: 1; distance: 20; decay: 1"
+					 position="-10 10 -10"></a-entity>
 
-		<a-entity geometry="primitive: plane; height: 500; width: 500"
+		<a-entity light="type: point; intensity: 1; distance: 20; decay: 1"
+					 position="10 0 10"></a-entity>
+
+		<a-entity geometry="primitive: plane; height: 30; width: 30"
 			 position="0 -0.5 0"
 			 rotation="-90 0 0"
-			 material="shader: flat; src: url(img/floor.jpg); repeat: 300 300"></a-entity>
+			 material="shader: flat; src: #floor; repeat: 30 30"></a-entity>
 
 	 </a-scene>
 

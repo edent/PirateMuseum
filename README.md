@@ -4,7 +4,7 @@
 
 Take a wander around the museum and view lost paintings, stolen sculptures, and digitally liberated artworks.
 
-As you look at the artwork, you will hear a spoken description of each one.
+As you look at the artwork, you will hear a spoken description of each one - if your [browser supports TTS](http://caniuse.com/#search=tts).
 
 Use the WASD keys to move around. Click and drag your mouse to look.
 
@@ -94,9 +94,10 @@ The text to speech is stolen and remixed from Wikipedia under a [CC BY-SA Licens
 ## Textures
 * [Floor](http://opengameart.org/content/more-wood-panels-batch-of-16-seamless-textures-with-normalmaps-sandwithdarkgreysjpg)
    * [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
-
 * [Sky](https://www.flickr.com/photos/pedroscreamerovsky/6839824524/)
    * [CC BY 2.0](http://creativecommons.org/licenses/by/2.0/)
+* [Marble](https://commons.wikimedia.org/wiki/File:Marble_pattern_008.jpg)
+   * [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/deed.en)
 
 ## Library
 * [Aframe](https://github.com/aframevr/aframe/)
